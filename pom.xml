@@ -7,12 +7,54 @@
     <groupId>org.example</groupId>
     <artifactId>mqtt-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <mqtt.client.version>0.4.0</mqtt.client.version>
+        <bouncycastle.version>1.47</bouncycastle.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <log4j2.version>2.9.1</log4j2.version>
+        <lombok.version>1.18.10</lombok.version>
+        <junit.version>4.12</junit.version>
+    </properties>
 
     <dependencies>
+        <!-- mqtt-client -->
+        <dependency>
+            <groupId>org.eclipse.paho</groupId>
+            <artifactId>mqtt-client</artifactId>
+            <version>${mqtt.client.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk15on</artifactId>
+            <version>${bouncycastle.version}</version>
+        </dependency>
+
+        <!-- slf4j核心包-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <!--用于与slf4j保持桥接-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <optional>true</optional>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
