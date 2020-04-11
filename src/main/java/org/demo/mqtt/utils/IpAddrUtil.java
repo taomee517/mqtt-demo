@@ -11,14 +11,20 @@ public class IpAddrUtil {
         Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
         while (interfaces.hasMoreElements()) {
             NetworkInterface current = interfaces.nextElement();
-            if (!current.isUp() || current.isLoopback() || current.isVirtual())
+            if (!current.isUp()
+                    || current.isLoopback()
+                    || current.isVirtual()
+                    || current.getDisplayName().contains("Virtual")){
                 continue;
+            }
             Enumeration<InetAddress> addresses = current.getInetAddresses();
             while (addresses.hasMoreElements()) {
                 InetAddress addr = addresses.nextElement();
-                if (addr.isLoopbackAddress())
+                if (addr.isLoopbackAddress()) {
                     continue;
-                if (addr.isSiteLocalAddress()) {//去掉还回和虚拟地址
+                }
+                //去掉还回和虚拟地址
+                if (addr.isSiteLocalAddress()) {
                     return addr;
                 }
             }
